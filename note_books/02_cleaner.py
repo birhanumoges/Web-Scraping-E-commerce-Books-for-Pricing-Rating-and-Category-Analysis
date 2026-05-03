@@ -1,5 +1,9 @@
+import re
 def clean_price(price_text):
     return float(price_text.replace('£', '').strip())
+    # keep only digits and dot
+    number = re.sub(r'[^0-9.]', '', price_text)
+    return float(number)
 
 def convert_rating(rating_class):
     mapping = {
