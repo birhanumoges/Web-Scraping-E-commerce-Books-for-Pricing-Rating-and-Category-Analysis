@@ -1,9 +1,18 @@
 import requests
 from bs4 import BeautifulSoup
-from cleaner import clean_price, convert_rating
-from db import insert_book
 import time
 import random
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.dirname(__file__)))
+import importlib
+
+cleaner = importlib.import_module("note_books.02_cleaner")
+db = importlib.import_module("note_books.03_db")
+
+clean_price = cleaner.clean_price
+convert_rating = cleaner.convert_rating
+insert_book = db.insert_book
 
 BASE_URL = "https://books.toscrape.com/catalogue/page-{}.html"
 
