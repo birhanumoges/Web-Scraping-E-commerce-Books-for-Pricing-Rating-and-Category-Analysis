@@ -27,6 +27,7 @@ def scrape_page(page):
     headers = random.choice(headers_list)
 
     response = requests.get(url, headers=headers)
+    response.encoding = 'utf-8'   # ✅ FIX
     soup = BeautifulSoup(response.text, "html.parser")
 
     books = soup.find_all("article", class_="product_pod")
