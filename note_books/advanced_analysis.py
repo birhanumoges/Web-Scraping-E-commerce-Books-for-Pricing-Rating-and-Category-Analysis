@@ -137,7 +137,6 @@ class BookAnalyzer:
         
         plt.tight_layout()
         plt.show()
-        print("✅ Visualization saved as 'price_rating_analysis.png'")
     
     def generate_sql_for_report(self):
         """Generate SQL queries for project report"""
@@ -176,9 +175,9 @@ class BookAnalyzer:
         FROM books;
         """
         
-        with open('project_queries.sql', 'w') as f:
-            f.write(sql_queries)
-        print("✅ SQL queries saved to 'project_queries.sql'")
+        #with open('project_queries.sql', 'w') as f:
+        #   f.write(sql_queries)
+        #print("✅ SQL queries saved to 'project_queries.sql'")
     
     def close(self):
         """Close database connection"""
@@ -188,7 +187,7 @@ class BookAnalyzer:
 
 def main():
     """Main execution function"""
-    print("🚀 Starting Book Price Tracker Analysis...")
+    print("✅ Starting Book Price Tracker Analysis...")
     
     # Initialize analyzer
     analyzer = BookAnalyzer(
@@ -202,9 +201,6 @@ def main():
         # Display main results
         results_df = analyzer.display_results()
         
-        # Export to CSV
-        analyzer.export_to_csv('average_price_per_rating.csv')
-        
         # Create visualization
         analyzer.create_visualization()
         
@@ -212,10 +208,6 @@ def main():
         analyzer.generate_sql_for_report()
         
         print("\n✅ Analysis completed successfully!")
-        print("\n📁 Generated files:")
-        print("   - average_price_per_rating.csv")
-        print("   - price_rating_analysis.png")
-        print("   - project_queries.sql")
         
     except Exception as e:
         print(f"❌ Error: {e}")
